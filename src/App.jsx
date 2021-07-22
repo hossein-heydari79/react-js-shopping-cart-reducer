@@ -55,6 +55,23 @@ function modeReducer(mode, action) {
   }
 }
 
+
+function showReducer(show, action) {
+  switch (action.type) {
+    case "TRUE_SHOW": {
+      return (
+        action.payload
+      )
+    }
+    case "FALSE_SHOW":
+      return action.payload
+
+    default:
+      return show
+  }
+}
+
+
 function App() {
 
   const [json, setJson] = useState(data.sort((a, b) => a.price - b.price));
@@ -71,24 +88,26 @@ function App() {
     show: false
   })
 
-  // const [mode, setMode] = useState({
-  //   show: false
-  // })
 
-
-  const [show, setShow] = useState({
+  const [show, showDispatch] = useReducer(showReducer, {
     show: false
   })
 
+
   let showModal = () => {
-    setShow({
-      show: true
+
+    showDispatch({
+      type: "TRUE_SHOW", payload: {
+        show: true
+      }
     })
   }
 
   let hideModal = () => {
-    setShow({
-      show: false
+    showDispatch({
+      type: "FALSE_SHOW", payload: {
+        show: false
+      }
     })
   }
 
