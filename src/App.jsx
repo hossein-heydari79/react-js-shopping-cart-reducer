@@ -72,6 +72,20 @@ function showReducer(show, action) {
 }
 
 
+function dataModalReducer(dataModal, action) {
+  switch (action.type) {
+    case "ADD_DATA_MODAl": {
+      return (
+        action.payload
+      )
+    }
+
+    default:
+      return dataModal
+  }
+}
+
+
 function App() {
 
   const [json, setJson] = useState(data.sort((a, b) => a.price - b.price));
@@ -112,7 +126,7 @@ function App() {
   }
 
 
-  const [dataModal, setDataModal] = useState({
+  const [dataModal, dataModalDispatch] = useReducer(dataModalReducer, {
     url: "",
     id: "",
     title: "",
@@ -120,6 +134,15 @@ function App() {
     price: "",
     sizes: []
   })
+
+  // const [dataModal, setDataModal] = useState({
+  //   url: "",
+  //   id: "",
+  //   title: "",
+  //   des: "",
+  //   price: "",
+  //   sizes: []
+  // })
 
 
 
@@ -165,7 +188,7 @@ function App() {
           <div className="card-section">
             {
               json.map((item, index) => (
-                <Card key={item.id} id={item.id} url={item.url} description={item.description} price={item.price} cardlist={cardlist} cardlistDispatch={cardlistDispatch} show={showModal} hide={hideModal} datamodal={dataModal} setdatamodal={setDataModal} />
+                <Card key={item.id} id={item.id} url={item.url} description={item.description} price={item.price} cardlist={cardlist} cardlistDispatch={cardlistDispatch} show={showModal} hide={hideModal} datamodal={dataModal} dataModalDispatch={dataModalDispatch} />
               ))
             }
           </div>
