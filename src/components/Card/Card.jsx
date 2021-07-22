@@ -30,7 +30,7 @@ export const Card = ({ id, url, description, price, cardlist, cardlistDispatch, 
         // })
 
         dataModalDispatch({
-            type: "ADD_DATA_MODAl", payload: {
+            type: "ADD_DATA_MODAL", payload: {
                 url: url,
                 id: id,
                 title: description,

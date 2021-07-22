@@ -14,7 +14,7 @@ import { useState, useEffect, useReducer } from 'react'
 
 function filterReducer(filter, action) {
   switch (action.type) {
-    case value: {
+    case "ADD": {
       return (
         action.payload
       )
@@ -44,7 +44,7 @@ function cardlistReducer(cardlist, action) {
 
 function modeReducer(mode, action) {
   switch (action.type) {
-    case value: {
+    case "TRUE": {
       return (
         action.payload
       )
@@ -74,7 +74,7 @@ function showReducer(show, action) {
 
 function dataModalReducer(dataModal, action) {
   switch (action.type) {
-    case "ADD_DATA_MODAl": {
+    case "ADD_DATA_MODAL": {
       return (
         action.payload
       )
