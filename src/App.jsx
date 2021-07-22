@@ -41,6 +41,20 @@ function cardlistReducer(cardlist, action) {
 }
 
 
+
+function modeReducer(mode, action) {
+  switch (action.type) {
+    case value: {
+      return (
+        action.payload
+      )
+    }
+
+    default:
+      return mode
+  }
+}
+
 function App() {
 
   const [json, setJson] = useState(data.sort((a, b) => a.price - b.price));
@@ -53,11 +67,13 @@ function App() {
 
   const [cardlist, cardlistDispatch] = useReducer(cardlistReducer, [])
 
-  // const [cardlist, setCardlist] = useState([])
-
-  const [mode, setMode] = useState({
+  const [mode, modeDispatch] = useReducer(modeReducer, {
     show: false
   })
+
+  // const [mode, setMode] = useState({
+  //   show: false
+  // })
 
 
   const [show, setShow] = useState({
@@ -144,7 +160,7 @@ function App() {
             ))
           }
           {
-            cardlist.length !== 0 && < Pay cardlist={cardlist} mode={mode} setmode={setMode} />
+            cardlist.length !== 0 && < Pay cardlist={cardlist} mode={mode} modeDispatch={modeDispatch} />
           }
 
           {
